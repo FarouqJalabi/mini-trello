@@ -1,6 +1,7 @@
 class BoardsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_board, only: %i[ show edit update destroy ]
+  # TODO validate ownership of board
 
   def index
     @boards = Board.all

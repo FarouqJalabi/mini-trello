@@ -18,5 +18,14 @@
     <% end %>
   </div>
 
-<%= render @board %>
+
+<div class="flex gap-4 mt-10 overflow-scroll">
+  <%= render @board.lists %>
+
+  <%= link_to new_board_list_path(@board), class: "btn btn-primary" do %>
+    New list
+    <i class="bi bi-plus-square-fill"></i>
+  <% end %>
+</div>
+
 </div>

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :boards, except: :create
+
+  resources :boards, except: [ :create ] do
+    resources :lists, except: [ :index ]
+  end
+
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -12,5 +16,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "boards#index"
 end

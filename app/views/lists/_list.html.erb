@@ -1,0 +1,8 @@
+<div id="<%= dom_id list %>" class="bg-primary-content gap-2 min-w-90 justify-between flex p-5 pb-8 items-center">
+  <h2 class="text-lg font-bold"><%= list.title %></h2>
+
+  <div>
+    <%= link_to "Edit", edit_board_list_path(list.board, list), class: "btn btn-secondary" %>
+    <%= button_to "Destroy", [@board, @list], method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "btn btn-error text-white", data: { turbo_confirm: "Are you sure?" } %>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<% content_for :title, "Editing list" %>
+
+<div class="md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">Editing list</h1>
+
+  <%= render "form", list: @list %>
+
+  <%= link_to "Back to board", @board, class: "btn" %>
+</div>
