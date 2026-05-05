@@ -1,0 +1,22 @@
+<% content_for :title, "Showing board" %>
+
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex items-center">
+    <h1 class="font-bold text-4xl mr-auto"><%= @board.title %></h1>
+    
+    <%= link_to edit_board_path(@board), class: "btn btn-primary" do%>
+      Edit
+      <i class="bi bi-pencil"></i>
+    <% end %>
+    <%= button_to @board, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "btn btn-error", data: { turbo_confirm: "Are you sure?" } do %>
+      Destroy
+      <i class="bi bi-trash"></i>
+    <% end %>
+  </div>
+
+<%= render @board %>
+</div>
