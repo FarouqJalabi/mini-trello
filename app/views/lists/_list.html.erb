@@ -1,8 +1,17 @@
-<div id="<%= dom_id list %>" class="bg-primary-content gap-2 min-w-90 justify-between flex p-5 pb-8 items-center">
-  <h2 class="text-lg font-bold"><%= list.title %></h2>
+<div id="<%= dom_id list %>" class="bg-primary-content gap-2 min-w-90 flex flex-col p-5">
+  <div class="flex justify-between ">  
+    <h2 class="text-lg font-bold"><%= list.title %></h2>
 
-  <div>
-    <%= link_to "Edit", edit_board_list_path(list.board, list), class: "btn btn-secondary" %>
-    <%= button_to "Destroy", [@board, @list], method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "btn btn-error text-white", data: { turbo_confirm: "Are you sure?" } %>
+    <div>
+      <%= link_to "Edit", edit_board_list_path(list.board, list), class: "btn btn-secondary" %>
+      <%= button_to "Destroy", [@board, list], method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "btn btn-error text-white", data: { turbo_confirm: "Are you sure?" } %>
+    </div>
   </div>
+
+  <%= render list.cards %>
+  
+  <%= link_to new_list_card_path(list), class: "btn btn-primary btn-soft" do %>
+    New card
+    <i class="bi bi-plus-square-fill"></i>
+  <% end %>
 </div>

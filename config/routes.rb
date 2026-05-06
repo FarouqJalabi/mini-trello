@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :cards
+  resources :cards, except: [ :index, :new, :create ]
+
+  resources :lists, only: [] do
+    resources :cards, only: [ :new, :create ]
+  end
 
   resources :boards, except: [ :create ] do
     resources :lists, except: [ :index ]

@@ -1,6 +1,6 @@
-class List < ApplicationRecord
-  belongs_to :board
-  has_many :cards, dependent: :destroy
+class Card < ApplicationRecord
+  belongs_to :list
+  has_one :board, through: :list
 
   validates :title, presence: true
   validates :order, numericality: { greater_than: 0 }
@@ -9,6 +9,6 @@ class List < ApplicationRecord
 
   private
     def set_default_order
-      self.order ||= board.lists.count+1
+      self.order ||= list.cards.count+1
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_05_121915) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_06_061951) do
   create_table "boards", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "title", null: false
@@ -19,10 +19,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_05_121915) do
     t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
+  create_table "cards", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "list_id", null: false
+    t.integer "order", null: false
+    t.string "title", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_cards_on_list_id"
+  end
+
   create_table "lists", force: :cascade do |t|
     t.integer "board_id", null: false
     t.datetime "created_at", null: false
-    t.integer "order", default: 0, null: false
+    t.integer "order", null: false
     t.string "title", null: false
     t.datetime "updated_at", null: false
     t.index ["board_id"], name: "index_lists_on_board_id"
@@ -41,5 +50,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_05_121915) do
   end
 
   add_foreign_key "boards", "users"
+  add_foreign_key "cards", "lists"
   add_foreign_key "lists", "boards"
 end

@@ -2,7 +2,6 @@ class ListsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_list, only: %i[ show edit update destroy ]
   before_action :set_board
-  # TODO validate ownership of list/board
 
   def show
   end
@@ -18,7 +17,7 @@ class ListsController < ApplicationController
     @list = @board.lists.new(list_params)
 
     if @list.save
-      redirect_to [ @board, @list ], notice: "List was successfully created." # Possible to focus on list?
+      redirect_to @board, notice: "List was successfully created." # Possible to focus on list?
     else
       render :new, status: :unprocessable_content
     end
@@ -26,7 +25,7 @@ class ListsController < ApplicationController
 
   def update
     if @list.update(list_params)
-      redirect_to [ @board, @list ], notice: "List was successfully updated.", status: :see_other
+      redirect_to @board, notice: "List was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_content
     end
@@ -34,7 +33,7 @@ class ListsController < ApplicationController
 
   def destroy
     @list.destroy!
-    redirect_to lists_path, notice: "List was successfully destroyed.", status: :see_other
+    redirect_to @list.board, notice: "List was successfully destroyed.", status: :see_other
   end
 
   private
@@ -43,10 +42,10 @@ class ListsController < ApplicationController
     end
 
     def set_list
-      @list = List.find(params.expect(:id))
+      @list = current_user.lists.find(params.expect(:id))
     end
 
     def list_params
-      params.expect(list: [ :order, :title ])
+      params.expect(list: [ :title ])
     end
 end

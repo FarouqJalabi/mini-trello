@@ -1,7 +1,6 @@
 class BoardsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_board, only: %i[ show edit update destroy ]
-  # TODO validate ownership of board
 
   def index
     @boards = Board.all
@@ -38,7 +37,7 @@ class BoardsController < ApplicationController
 
   private
     def set_board
-      @board = Board.find(params.expect(:id))
+      @board = current_user.boards.find(params.expect(:id))
     end
 
     def board_params

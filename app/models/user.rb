@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :boards, dependent: :destroy
+  has_many :lists, through: :boards
+  has_many :cards, through: :lists
 end
