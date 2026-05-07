@@ -1,4 +1,4 @@
-<div id="<%= dom_id list %>" class="bg-primary-content gap-2 min-w-90 flex flex-col p-5">
+<div id="<%= dom_id list %>" class="bg-primary-content gap-2 min-w-90 flex flex-col p-5" data-controller="draggable dropzone" data-dropzone-model-name-value="card" data-dropzone-is-horizontal-value="false">
   <div class="flex justify-between ">  
     <h2 class="text-lg font-bold"><%= list.title %></h2>
 
@@ -8,7 +8,9 @@
     </div>
   </div>
 
-  <%= render list.cards %>
+  <div data-dropzone-target="drop" class="flex flex-col gap-2">
+    <%= render list.cards %>
+  </div>
   
   <%= link_to new_list_card_path(list), class: "btn btn-primary btn-soft" do %>
     New card

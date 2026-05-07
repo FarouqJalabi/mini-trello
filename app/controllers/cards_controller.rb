@@ -23,6 +23,15 @@ class CardsController < ApplicationController
     end
   end
 
+  def bulk_update
+    ActiveRecord::Base.transaction do
+      cards_params.each do |card_params|
+        list = current_user.cards.find(card_params[:id])
+        list.update!(card_params.except(:id))
+      end
+    end
+  end
+
   def update
     if @card.update(card_params)
       redirect_to @card.board, notice: "Card was successfully updated.", status: :see_other
@@ -43,6 +52,10 @@ class CardsController < ApplicationController
 
     def set_card
       @card = current_user.cards.find(params.expect(:id))
+    end
+
+    def cards_params
+      params.expect(records: [ [ :id, :order, :list_id ] ])
     end
 
     def card_params

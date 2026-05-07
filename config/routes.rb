@@ -2,10 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :cards, except: [ :index, :new, :create ]
-
   resources :lists, only: [] do
     resources :cards, only: [ :new, :create ]
   end
+
+  patch "/lists", to: "lists#bulk_update"
+  patch "/cards", to: "cards#bulk_update"
 
   resources :boards, except: [ :create ] do
     resources :lists, except: [ :index ]

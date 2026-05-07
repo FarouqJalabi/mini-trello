@@ -19,8 +19,10 @@
   </div>
 
 
-<div class="flex gap-4 mt-10 overflow-scroll">
-  <%= render @board.lists %>
+<div class="flex gap-4 mt-10 overflow-scroll" data-controller="dropzone" data-dropzone-model-name-value="list">
+  <div class="flex gap-4 overflow-scroll" data-dropzone-target="drop">
+    <%= render @board.lists %>
+  </div>
 
   <%= link_to new_board_list_path(@board), class: "btn btn-primary" do %>
     New list

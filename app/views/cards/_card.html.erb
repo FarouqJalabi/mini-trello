@@ -1,8 +1,7 @@
-<div id="<%= dom_id card %>" class="group flex justify-between items-center w-full bg-white p-2 ">
+<div id="<%= dom_id card %>" class="group flex justify-between items-center w-full bg-white p-2" data-controller="draggable">
   <div>
     <div class="flex">
       <%= card.title %>
-      <%= card.order %>
     </div>
     <p class="opacity-60 text-sm">
       <%= card.created_at.to_formatted_s(:short) %> - <%= card.updated_at.to_formatted_s(:short) %>
