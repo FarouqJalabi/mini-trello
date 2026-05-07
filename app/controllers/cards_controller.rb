@@ -1,10 +1,7 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_card, only: %i[ show edit update destroy ]
+  before_action :set_card, only: %i[ edit update destroy ]
   before_action :set_list, only: %i[ new create ]
-
-  def show
-  end
 
   def new
     @card = @list.cards.new()

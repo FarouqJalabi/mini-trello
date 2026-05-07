@@ -1,17 +1,19 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :cards, except: [ :index, :new, :create ]
-  resources :lists, only: [] do
-    resources :cards, only: [ :new, :create ]
-  end
-
-  patch "/lists", to: "lists#bulk_update"
-  patch "/cards", to: "cards#bulk_update"
 
   resources :boards, except: [ :create ] do
-    resources :lists, except: [ :index ]
+    resources :lists, only: [ :new, :create ]
   end
+
+  resources :lists, only: [ :edit, :update ] do
+    resources :cards, only: [ :new, :create ]
+  end
+  resources :cards, only: [ :edit, :update ]
+
+  patch "/cards", to: "cards#bulk_update"
+  patch "/lists", to: "lists#bulk_update"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

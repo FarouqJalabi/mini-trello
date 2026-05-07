@@ -3,7 +3,13 @@
 <div class="md:w-2/3 w-full">
   <h1 class="font-bold text-4xl">Editing list</h1>
 
-  <%= render "form", list: @list %>
+  <turbo-frame id="modal">
+    <%= render "form", list: @list %>
 
-  <%= link_to "Back to board", @board, class: "btn" %>
+    <%= button_to @list, method: :delete, form_class: "contents", class: "btn btn-error", data: { turbo_confirm: "Are you sure?" } do %>
+      <i class="bi bi-trash3-fill"></i>
+    <% end %>
+  </turbo-frame>
+
+  <%= link_to "Back to board", @list.board, class: "btn" %>
 </div>

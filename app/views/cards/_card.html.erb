@@ -1,20 +1,11 @@
-<div id="<%= dom_id card %>" class="group flex justify-between items-center w-full bg-white p-2" data-controller="draggable">
+<%= link_to edit_card_path(card), id: dom_id(card), class:"bg-base-100 flex justify-between items-center w-full p-2 rounded-field", "data-controller": "draggable", data: { turbo_frame: "modal" } do %>
   <div>
     <div class="flex">
       <%= card.title %>
     </div>
+
     <p class="opacity-60 text-sm">
       <%= card.created_at.to_formatted_s(:short) %> - <%= card.updated_at.to_formatted_s(:short) %>
     </p>
   </div>
-
-  <div class="not-group-hover:opacity-0 group-hover:opacity-100 transition-all">
-    <%= link_to edit_card_path(card), class: "bg-primary rounded-full aspect-square text-white w-8 inline-flex items-center justify-center" do %>
-     <i class="bi bi-pencil-fill"></i>
-    <% end %>
-    
-    <%= button_to card, method: :delete, form_class: "contents", class: "bg-error rounded-full aspect-square text-white w-8", data: { turbo_confirm: "Are you sure?" } do %>
-      <i class="bi bi-trash3-fill"></i>
-    <% end %>
-  </div>
-</div>
+<% end %>

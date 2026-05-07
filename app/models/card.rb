@@ -9,6 +9,6 @@ class Card < ApplicationRecord
 
   private
     def set_default_order
-      self.order ||= list.cards.count+1
+      self.order ||= (list&.cards&.second_to_last&.order || 0) + 1
     end
 end

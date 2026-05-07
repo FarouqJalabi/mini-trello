@@ -1,5 +1,7 @@
 <% content_for :title, "Showing board" %>
 
+<%= turbo_page_requires_reload %>
+
 <div class="w-full">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
@@ -8,23 +10,19 @@
   <div class="flex items-center">
     <h1 class="font-bold text-4xl mr-auto"><%= @board.title %></h1>
     
-    <%= link_to edit_board_path(@board), class: "btn btn-primary" do%>
+    <%= link_to edit_board_path(@board), class: "btn btn-primary", data: {turbo_frame: "modal"} do %>
       Edit
-      <i class="bi bi-pencil"></i>
-    <% end %>
-    <%= button_to @board, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "btn btn-error", data: { turbo_confirm: "Are you sure?" } do %>
-      Destroy
-      <i class="bi bi-trash"></i>
+      <i class="bi bi-pencil-fill"></i>
     <% end %>
   </div>
 
 
-<div class="flex gap-4 mt-10 overflow-scroll" data-controller="dropzone" data-dropzone-model-name-value="list">
-  <div class="flex gap-4 overflow-scroll" data-dropzone-target="drop">
+<div class="flex gap-4 mt-10 overflow-auto" data-controller="dropzone" data-dropzone-model-name-value="list">
+  <div class="flex items-start gap-4 overflow-auto" data-dropzone-target="drop">
     <%= render @board.lists %>
   </div>
 
-  <%= link_to new_board_list_path(@board), class: "btn btn-primary" do %>
+  <%= link_to new_board_list_path(@board), class: "btn btn-primary", data: {turbo_frame: "modal"} do %>
     New list
     <i class="bi bi-plus-square-fill"></i>
   <% end %>

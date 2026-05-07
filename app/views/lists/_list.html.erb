@@ -1,10 +1,12 @@
-<div id="<%= dom_id list %>" class="bg-primary-content gap-2 min-w-90 flex flex-col p-5" data-controller="draggable dropzone" data-dropzone-model-name-value="card" data-dropzone-is-horizontal-value="false">
+<div id="<%= dom_id list %>" class="bg-base-200 gap-2 min-w-90 flex flex-col p-5 rounded-box" data-controller="draggable dropzone" data-dropzone-model-name-value="card" data-dropzone-is-horizontal-value="false">
   <div class="flex justify-between ">  
     <h2 class="text-lg font-bold"><%= list.title %></h2>
 
     <div>
-      <%= link_to "Edit", edit_board_list_path(list.board, list), class: "btn btn-secondary" %>
-      <%= button_to "Destroy", [@board, list], method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "btn btn-error text-white", data: { turbo_confirm: "Are you sure?" } %>
+      <%= link_to  edit_list_path(list), class: "btn btn-secondary", data: { turbo_frame: "modal" } do %>
+        <i class="bi bi-pencil-fill"></i>
+      <% end %>
+
     </div>
   </div>
 
@@ -12,7 +14,7 @@
     <%= render list.cards %>
   </div>
   
-  <%= link_to new_list_card_path(list), class: "btn btn-primary btn-soft" do %>
+  <%= link_to new_list_card_path(list), class: "btn btn-primary btn-soft", data: { turbo_frame: "modal" } do %>
     New card
     <i class="bi bi-plus-square-fill"></i>
   <% end %>

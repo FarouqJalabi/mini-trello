@@ -24,6 +24,13 @@
   </head>
 
   <body>
+    <dialog id="main-dialog" closedby="any" data-controller="dialog" class="mx-auto mt-5 p-5 rounded-box">
+      <%= turbo_frame_tag "modal" do %>
+        loading... (shouldn't be visible)
+      <% end %>
+      <!-- <button commandfor="main-dialog" command="close" class="btn">Cancel</button> -->
+    </dialog>
+
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
