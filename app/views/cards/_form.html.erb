@@ -16,6 +16,12 @@
     <%= form.text_field :title, class: ["input", {"border-gray-400 focus:outline-blue-600": card.errors[:title].none?, "border-red-400 focus:outline-red-600": card.errors[:title].any?}], autofocus: true, onfocus:"let temp_value=this.value; this.value=''; this.value=temp_value" %>
   </div>
 
+  <div class="my-5">
+    <%= form.label :description %>
+    <!-- TODO attachments looks bad -->
+    <%= form.rich_textarea :description %> 
+  </div>
+
   <div class="inline">
     <%= form.submit class: "btn btn-primary" %>
   </div>

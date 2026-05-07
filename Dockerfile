@@ -16,7 +16,7 @@ WORKDIR /rails
 
 # Install base packages
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 libvips sqlite3 && \
+    apt-get install --no-install-recommends -y curl libjemalloc2 libvips poppler-utils sqlite3 nodejs npm && \
     ln -s /usr/lib/$(uname -m)-linux-gnu/libjemalloc.so.2 /usr/local/lib/libjemalloc.so && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
@@ -52,8 +52,6 @@ COPY . .
 RUN bundle exec bootsnap precompile -j 1 app/ lib/
 
 # Install npm packages
-RUN apt-get update -qq && \
-    apt-get install -y nodejs npm
 RUN npm install
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY

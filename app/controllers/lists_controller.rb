@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_list, only: %i[ show edit update destroy ]
+  before_action :set_list, only: %i[ edit update destroy ]
   before_action :set_board, only: %i[ new create ]
 
   def new

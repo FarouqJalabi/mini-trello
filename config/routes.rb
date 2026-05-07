@@ -6,10 +6,10 @@ Rails.application.routes.draw do
     resources :lists, only: [ :new, :create ]
   end
 
-  resources :lists, only: [ :edit, :update ] do
+  resources :lists, only: [ :edit, :update, :destroy  ] do
     resources :cards, only: [ :new, :create ]
   end
-  resources :cards, only: [ :edit, :update ]
+  resources :cards, only: [ :edit, :update, :destroy ]
 
   patch "/cards", to: "cards#bulk_update"
   patch "/lists", to: "lists#bulk_update"

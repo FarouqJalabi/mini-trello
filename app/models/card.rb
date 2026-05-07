@@ -4,6 +4,7 @@ class Card < ApplicationRecord
 
   validates :title, presence: true
   validates :order, numericality: { greater_than: 0 }
+  has_rich_text :description
 
   before_validation :set_default_order, on: :create
 

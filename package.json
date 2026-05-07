@@ -15,7 +15,9 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@rails/actiontext": "^8.1.300",
     "bootstrap-icons": "^1.13.1",
-    "daisyui": "^5.5.19"
+    "daisyui": "^5.5.19",
+    "trix": "^2.1.18"
   }
 }
