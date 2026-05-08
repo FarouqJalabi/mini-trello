@@ -1,0 +1,18 @@
+<%= content_for(:content) do %>
+  <div class="hero min-h-screen">
+    <div class="hero-content flex-col lg:flex-row-reverse">
+      <div class="text-center lg:text-left">
+        <div class="flex items-center justify-center lg:justify-start gap-2 ">
+          <h1 class="text-5xl font-bold">Mini-trello</h1>
+          <i class="bi bi-trello text-primary text-5xl rotate-y-180"></i>
+        </div>
+        <p class="py-6 max-w-xl">
+          Mini-Trello hjelper deg med å organisere oppgaver og prosjekter på en enkel og oversiktlig måte.
+        </p>
+      </div>
+      <%= yield %>
+    </div>
+  </div>
+<% end %>
+
+<%= render template: "layouts/application", locals: { hide_navbar: true } %>

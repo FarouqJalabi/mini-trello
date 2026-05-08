@@ -1,0 +1,17 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <fieldset class="fieldset flex flex-col bg-base-200 border-base-300 rounded-box w-xs border p-4">
+    <legend class="fieldset-legend">Login</legend>
+
+    <%= f.label :email, class: "label" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input" %>
+
+    <%= f.label :password, class: "label" %>
+    <%= f.password_field :password, autocomplete: "current-password", class: "input" %>
+
+    
+    <%= f.submit "Log in", class: "btn btn-primary mt-2" %>
+    <div class="flex justify-around ">
+      <%= render "devise/shared/links" %>
+    </div>
+  </fieldset>
+<% end %>

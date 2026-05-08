@@ -1,0 +1,14 @@
+<turbo-frame id="flash" class="contents">
+  <div class="toast toast-top toast-end">
+    <% if alert.present? %>
+      <div class="alert alert-error">
+        <span><%= alert %></span>
+      </div>
+    <% end %>
+    <% if notice.present? %>
+      <div class="alert alert-info">
+        <span><%= notice %></span>
+      </div>
+    <% end %>
+  </div>
+</turbo-frame>

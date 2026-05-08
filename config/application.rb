@@ -23,5 +23,33 @@ module Tavla
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.action_view.field_error_proc = Proc.new do |html_tag, instance_tag|
+      fragment = Nokogiri::HTML.fragment(html_tag)
+      field = fragment.at("input,textarea,select,label")
+
+      model = instance_tag.object
+      field_name = instance_tag.instance_variable_get(:@method_name)
+      field_errors = model.errors.full_messages_for(field_name)
+
+      html = if field && field_errors.any?
+
+        error_message = field_errors.join(", ") # just this field's errors
+        if field.name == "label"
+          field.add_class("text-error")
+          field.to_s.html_safe
+        else
+          field.add_class("input-error")
+          <<-HTML.html_safe
+            #{fragment}
+            <p class="text-error">#{error_message}</p>
+          HTML
+        end
+      else
+        html_tag
+      end
+
+      html
+    end
   end
 end

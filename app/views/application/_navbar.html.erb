@@ -1,0 +1,15 @@
+<nav class="flex items-start mx-2 sm:mx-5 text-primary-content gap-4 mb-7">
+  <%= link_to root_path, class: "flex items-center p-4 py-2 bg-primary rounded-b-lg  py-3" do %>
+    <%# <%= image_tag "/icon-white.svg", class: "w-10" %>
+    <h1 class="text-xl font-bold">Mini-trello</h1>
+  <% end %>
+
+  <% if current_user %>
+    <%= link_to root_path, class:"font-bold bg-primary p-1 px-2 rounded-b-lg" do %>
+      <i class="bi bi-person-fill text-2xl"></i>
+      <span class="sr-only">Account</span>
+    <% end %>
+  <% end %>
+</nav>
+
+
