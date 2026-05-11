@@ -1,9 +1,9 @@
-<div id="<%= dom_id board %>" class="card card-border p-5 w-full sm:w-70 my-5 space-y-5" data-theme="<%= board.theme %>">
+<div id="<%= dom_id board %>" class="card card-border p-5 w-full sm:w-70 my-5 space-y-5 bg-base-200" data-theme="<%= board.theme %>">
   <div>
     <p class="text-2xl"><%= board.title %></p>
   </div>
 
-  <%= link_to "Show", board, class: "btn btn-secondary w-full" %>
+  <%= link_to "Show", board, class: "btn btn-primary w-full" %>
   <%= button_to "Destroy", board, method: :delete, class: "btn btn-error w-full", data: { turbo_confirm: "Are you sure?" } %>
 </div>
 

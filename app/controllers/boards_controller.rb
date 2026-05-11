@@ -45,6 +45,6 @@ class BoardsController < ApplicationController
     end
 
     def board_params
-      params.expect(board: [ :title ])
+      params.expect(board: [ :title, :theme ])
     end
 end

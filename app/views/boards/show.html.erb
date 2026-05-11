@@ -18,8 +18,8 @@
   </div>
 
 
-<div class="flex gap-4 mt-5 overflow-auto" data-controller="dropzone" data-dropzone-model-name-value="list">
-  <div class="flex items-start gap-4 px-3 py-1 overflow-auto relative" data-dropzone-target="drop">
+<div class="flex gap-4 mt-5 overflow-auto items-start" data-controller="dropzone" data-dropzone-model-name-value="list">
+  <div class="px-3 py-1 overflow-auto relative contents" data-dropzone-target="drop">
     <%= render @board.lists %>
     <div class="indicator hidden bg-secondary transition-all duration-100 absolute h-full w-1" data-controller="indicator"></div> 
   </div>

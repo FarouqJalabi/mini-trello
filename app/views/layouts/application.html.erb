@@ -29,7 +29,7 @@
     <%= render "application/modal" %>
     <%= render "application/flash" %>
 
-    <main class="px-5">
+    <main class="px-2 sm:px-5">
       <%= content_for?(:content) ? yield(:content) : yield %>
     </main>
   </body>

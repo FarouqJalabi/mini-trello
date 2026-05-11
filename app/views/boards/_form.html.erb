@@ -2,6 +2,9 @@
   <%= form.label :title, class: "label" %>
   <%= form.text_field :title, class: "input block" %>
 
+  <%= form.label :theme, class: "label" %>
+  <%= form.select :theme, options_for_select(Board.themes, board.theme), {}, class: "select block" %>
+
   <div class="inline">
     <%= form.submit class: "btn btn-primary" %>
   </div>
