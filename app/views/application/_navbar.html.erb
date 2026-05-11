@@ -1,15 +1,27 @@
-<nav class="flex items-start mx-2 sm:mx-5 text-primary-content gap-4 mb-7">
-  <%= link_to root_path, class: "flex items-center p-4 py-2 bg-primary rounded-b-lg  py-3" do %>
-    <%# <%= image_tag "/icon-white.svg", class: "w-10" %>
-    <h1 class="text-xl font-bold">Mini-trello</h1>
+<nav class="flex items-start mx-2 sm:mx-5 gap-4 mb-7">
+  <%= link_to root_path, class: "flex items-center p-4 py-2 bg-primary rounded-b-lg py-3" do %>
+    <i class="bi bi-trello  text-primary-content mr-2 rotate-y-180"></i>
+    <h2 class="text-xl font-bold text-primary-content">Mini-trello</h2>
   <% end %>
 
   <% if current_user %>
-    <%= link_to root_path, class:"font-bold bg-primary p-1 px-2 rounded-b-lg" do %>
+    <button class="bg-primary p-1 px-2 rounded-b-lg text-primary-content" popovertarget="user-popover" style="anchor-name:--anchor-1">
       <i class="bi bi-person-fill text-2xl"></i>
       <span class="sr-only">Account</span>
-    <% end %>
+    </button>
+
+    <ul class="dropdown menu w-52 rounded-box bg-base-200 shadow-sm" popover id="user-popover" style="position-anchor:--anchor-1">
+      <li>
+        <%= button_to destroy_user_session_path, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "p-2" do%>
+          <i class="bi bi-door-open text-lg"></i> Logout
+        <% end %>
+      </li>
+
+      <li>
+        <%= button_to user_path, method: :delete, data: { turbo_confirm: "Are you sure? You can't undo this!" }, class: "p-2" do%>
+          <i class="bi bi-trash3"></i> Slette bruker
+        <% end %>
+      </li>
+    </ul>
   <% end %>
 </nav>
-
-

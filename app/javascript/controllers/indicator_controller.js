@@ -45,7 +45,7 @@ export default class extends Controller {
 
     if (this.isHorizontalValue) {
       if (rect) {
-        this.element.style.left = `${(rect.right - containerRect.left) + 6}px`;
+        this.element.style.left = `${(rect.right - containerRect.left) - 14}px`;
       } else { 
         this.element.style.left = "0px"
       }

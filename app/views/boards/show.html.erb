@@ -18,16 +18,16 @@
   </div>
 
 
-<div class="flex gap-4 mt-5 overflow-auto items-start" data-controller="dropzone" data-dropzone-model-name-value="list">
-  <div class="px-3 py-1 overflow-auto relative contents" data-dropzone-target="drop">
-    <%= render @board.lists %>
-    <div class="indicator hidden bg-secondary transition-all duration-100 absolute h-full w-1" data-controller="indicator"></div> 
+  <div class="relative flex gap-4 mt-5 p-1 overflow-auto items-start" data-controller="dropzone" data-dropzone-model-name-value="list" tabindex="-1">
+    <div class="contents" data-dropzone-target="drop">
+      <%= render @board.lists %>
+      <div class="indicator hidden bg-secondary transition-all duration-100 absolute h-full w-1" data-controller="indicator"></div> 
+    </div>
+    <%= link_to new_board_list_path(@board), class: "btn btn-primary mt-1", data: {turbo_frame: "modal"} do %>
+      New list
+      <i class="bi bi-plus-square-fill"></i>
+    <% end %>
   </div>
-  <%= link_to new_board_list_path(@board), class: "btn btn-primary mt-1", data: {turbo_frame: "modal"} do %>
-    New list
-    <i class="bi bi-plus-square-fill"></i>
-  <% end %>
-</div>
 
 </div>
 

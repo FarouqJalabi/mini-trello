@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  resource :user, only: [ :destroy ]
 
   resources :boards do
     resources :lists, only: [ :new, :create ]
