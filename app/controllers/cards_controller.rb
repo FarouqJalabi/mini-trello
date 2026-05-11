@@ -4,7 +4,7 @@ class CardsController < ApplicationController
   before_action :set_list, only: %i[ new create ]
 
   def new
-    @card = @list.cards.new()
+    @card = @list.cards.new
   end
 
   def edit

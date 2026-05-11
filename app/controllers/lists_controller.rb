@@ -4,7 +4,7 @@ class ListsController < ApplicationController
   before_action :set_board, only: %i[ new create ]
 
   def new
-    @list = List.new
+    @list = @board.lists.new
   end
 
   def edit

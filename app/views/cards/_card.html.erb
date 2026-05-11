@@ -1,4 +1,4 @@
-<%= link_to edit_card_path(card), id: dom_id(card), class:"bg-base-100 flex justify-between items-center w-full p-2 rounded-field", "data-controller": "draggable", data: { turbo_frame: "modal" } do %>
+<%= link_to edit_card_path(card), id: dom_id(card), class:"bg-base-100 flex justify-between items-center w-full p-2 rounded-field", data: { controller: "draggable moveable", turbo_frame: "modal" } do %>
   <div>
     <div class="flex">
       <%= card.title %>

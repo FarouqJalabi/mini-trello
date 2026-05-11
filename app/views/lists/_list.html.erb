@@ -1,4 +1,5 @@
-<div id="<%= dom_id list %>" class="bg-base-200 gap-2 min-w-90 flex flex-col p-5 rounded-box" data-controller="draggable dropzone" data-dropzone-model-name-value="card" data-dropzone-is-horizontal-value="false">
+<div id="<%= dom_id list %>" class="bg-base-200 gap-2 min-w-90 max-w-90 flex flex-col p-5 rounded-box relative" 
+  data-controller="draggable dropzone moveable" data-dropzone-model-name-value="card" data-dropzone-is-horizontal-value="false">
   <div class="flex justify-between ">  
     <h2 class="text-lg font-bold"><%= list.title %></h2>
 
@@ -10,8 +11,9 @@
     </div>
   </div>
 
-  <div data-dropzone-target="drop" class="flex flex-col gap-2">
+  <div data-dropzone-target="drop" class="flex flex-col gap-2 py-1 relative">
     <%= render list.cards %>
+    <div class="indicator hidden bg-secondary transition-all duration-100 absolute w-[80%] h-1 left-[10%]" data-controller="indicator" data-indicator-is-horizontal-value="false"></div>
   </div>
   
   <%= link_to new_list_card_path(list), class: "btn btn-primary btn-soft", data: { turbo_frame: "modal" } do %>

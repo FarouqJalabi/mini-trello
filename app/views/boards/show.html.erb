@@ -18,8 +18,9 @@
 
 
 <div class="flex gap-4 mt-10 overflow-auto" data-controller="dropzone" data-dropzone-model-name-value="list">
-  <div class="flex items-start gap-4 overflow-auto" data-dropzone-target="drop">
+  <div class="flex items-start gap-4 px-3 overflow-auto relative" data-dropzone-target="drop">
     <%= render @board.lists %>
+    <div class="indicator hidden bg-secondary transition-all duration-100 absolute h-full w-1" data-controller="indicator"></div>
   </div>
 
   <%= link_to new_board_list_path(@board), class: "btn btn-primary", data: {turbo_frame: "modal"} do %>
