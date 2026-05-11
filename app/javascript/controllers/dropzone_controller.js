@@ -23,6 +23,7 @@ export default class extends Controller {
   }
 
   dragEnterHandler = (ev)=>{
+    ev.preventDefault(); // don't remove, prevents wierd behaviour with drop not being fired in brave(/chromium?)
     if (this.element.contains(ev.relatedTarget)) { return }
     if (!this.shouldHandleDrop()) { return }
 
