@@ -2,8 +2,7 @@
 @import "bootstrap-icons/font/bootstrap-icons";
 
 @plugin "daisyui" {
- themes: light --default;
- /* themes: cmyk valentine emerald dark corporate garden aqua */
+ themes: light --default, cmyk, valentine, emerald, dark, corporate, garden, aqua;
 }
 
 @plugin "daisyui/theme" {

@@ -23,8 +23,10 @@ class CardsController < ApplicationController
   def bulk_update
     ActiveRecord::Base.transaction do
       cards_params.each do |card_params|
-        list = current_user.cards.find(card_params[:id])
-        list.update!(card_params.except(:id))
+        card = current_user.cards.find(card_params[:id])
+        current_user.lists.find(card_params[:list_id]) if card_params[:list_id] # raises 404
+
+        card.update!(card_params.except(:id))
       end
     end
   end

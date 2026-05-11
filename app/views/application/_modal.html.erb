@@ -2,7 +2,10 @@
   <%= turbo_frame_tag "modal" do %>
     loading... (shouldn't be visible)
   <% end %>
-  <button commandfor="main-dialog" command="close" class="absolute top-5 right-5">X</button>
+  <button commandfor="main-dialog" command="close" class="absolute top-3 right-5 btn btn-sm">
+    <span class="sr-only">close dialog</span>
+    <i class="bi bi-x text-xl"></i>
+  </button>
 </dialog>
 
 

@@ -1,36 +1,17 @@
 <% content_for :title, "Boards" %>
 
 <div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
-  <% end %>
-
-  <% if alert.present? %>
-    <div role="alert" class="alert alert-error">
-      <i class="bi bi-x-circle"></i>
-      <span><%= alert %></span>
-    </div>
-  <% end %>
-
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Boards</h1>
-    <%= link_to new_board_path, class: "btn btn-primary" do %>
+    <%= link_to new_board_path, class: "btn btn-primary", data: { turbo_frame: "modal" } do %>
       New board
       <i class="bi bi-plus-square-fill"></i>
     <% end %>
   </div>
 
-  <div id="boards" class="min-w-full divide-y divide-gray-200 space-y-5">
+  <div id="boards" class="min-w-full flex flex-wrap gap-5">
     <% if @boards.any? %>
-      <% @boards.each do |board| %>
-        <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">
-          <%= render board %>
-          <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
-            <%= link_to "Show", board, class: "btn btn-secondary" %>
-            <%= button_to "Destroy", board, method: :delete, class: "btn btn-error", data: { turbo_confirm: "Are you sure?" } %>
-          </div>
-        </div>
-      <% end %>
+      <%= render @boards %>
     <% else %>
       <p class="text-center my-10">No boards found.</p>
     <% end %>

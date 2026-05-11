@@ -1,19 +1,7 @@
-<%= form_with(model: [@list, card], class: "contents") do |form| %>
-  <% if card.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
-      <h2><%= pluralize(card.errors.count, "error") %> prohibited this card from being saved:</h2>
-
-      <ul class="list-disc ml-6">
-        <% card.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="my-5">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: ["input", {"border-gray-400 focus:outline-blue-600": card.errors[:title].none?, "border-red-400 focus:outline-red-600": card.errors[:title].any?}], autofocus: true, onfocus:"let temp_value=this.value; this.value=''; this.value=temp_value" %>
+<%= form_with(model: [@list, card], class: "contents space-y-4") do |form| %>
+  <div>
+    <%= form.label :title, class: "label" %>
+    <%= form.text_field :title, class: "input block", autofocus: true, onfocus: "let temp_value=this.value; this.value=''; this.value=temp_value" %>
   </div>
 
   <div class="my-5">
@@ -22,7 +10,5 @@
     <%= form.rich_textarea :description %> 
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "btn btn-primary" %>
-  </div>
+  <%= form.submit class: "btn btn-primary" %>
 <% end %>

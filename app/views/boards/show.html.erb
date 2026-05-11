@@ -1,4 +1,5 @@
 <% content_for :title, "Showing board" %>
+<input type="radio" class="theme-controller" name="theme" value="<%= @board.theme %>" checked hidden />
 
 <%= turbo_page_requires_reload %>
 
@@ -17,16 +18,17 @@
   </div>
 
 
-<div class="flex gap-4 mt-10 overflow-auto" data-controller="dropzone" data-dropzone-model-name-value="list">
-  <div class="flex items-start gap-4 px-3 overflow-auto relative" data-dropzone-target="drop">
+<div class="flex gap-4 mt-5 overflow-auto" data-controller="dropzone" data-dropzone-model-name-value="list">
+  <div class="flex items-start gap-4 px-3 py-1 overflow-auto relative" data-dropzone-target="drop">
     <%= render @board.lists %>
-    <div class="indicator hidden bg-secondary transition-all duration-100 absolute h-full w-1" data-controller="indicator"></div>
+    <div class="indicator hidden bg-secondary transition-all duration-100 absolute h-full w-1" data-controller="indicator"></div> 
   </div>
-
-  <%= link_to new_board_list_path(@board), class: "btn btn-primary", data: {turbo_frame: "modal"} do %>
+  <%= link_to new_board_list_path(@board), class: "btn btn-primary mt-1", data: {turbo_frame: "modal"} do %>
     New list
     <i class="bi bi-plus-square-fill"></i>
   <% end %>
 </div>
 
 </div>
+
+

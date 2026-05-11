@@ -10,12 +10,16 @@ class BoardsController < ApplicationController
   end
 
   def new
-    @board = current_user.boards.new(title: "New board")
+    @board = current_user.boards.new
+  end
+
+  def create
+    @board = current_user.boards.new(board_params)
 
     if @board.save
       redirect_to @board, notice: "Board was successfully created."
     else
-      redirect_to :boards, alert: "Unable to create board due to: #{@board.errors.full_messages.first}"
+      render :new, status: :unprocessable_content
     end
   end
 
