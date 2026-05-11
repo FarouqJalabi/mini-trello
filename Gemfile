@@ -66,7 +66,6 @@ group :test do
 end
 
 gem "devise", "~> 5.0"
-
 gem "sentry-ruby"
 gem "sentry-rails"
 gem "requestjs-rails"
