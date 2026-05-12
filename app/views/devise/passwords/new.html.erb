@@ -8,8 +8,7 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
 
     <%= f.submit "Send me password reset instructions", class: "btn btn-primary mt-2" %>
-    <div class="flex justify-around">
-      <%= render "devise/shared/links" %>
-    </div>
+
+    <%= render "devise/shared/links" %>
   </fieldset>
 <% end %>

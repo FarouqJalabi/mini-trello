@@ -15,8 +15,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
 
     <%= f.submit "Change my password", class: "btn btn-primary mt-2" %>
-    <div class="flex justify-around">
-      <%= render "devise/shared/links" %>
-    </div>
+
+    <%= render "devise/shared/links" %>
   </fieldset>
 <% end %>
