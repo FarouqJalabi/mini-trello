@@ -8,3 +8,231 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+/* TRIX CUSTOMIZATION START */
+
+@charset "UTF-8";
+
+@layer base {
+  trix-toolbar {
+    @apply sticky top-0 border-0 bg-base-200 z-10;
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .trix-button-row {
+      @apply flex flex-nowrap justify-between overflow-x-auto gap-4 p-2;
+    }
+
+    .trix-button-group {
+      @apply flex mb-2 rounded-lg shadow-sm overflow-hidden;
+
+      margin-right: 0.5rem;
+    }
+
+    .trix-button-group-spacer {
+      @apply flex-grow;
+    }
+
+    .trix-button {
+      @apply relative bg-neutral-content hover:bg-neutral font-normal text-base text-neutral whitespace-nowrap outline-none transition-colors duration-200 px-2 py-1;
+
+      &:not(:first-child) {
+        @apply border-l border-l-base-300;
+      }
+
+      &.trix-active {
+        @apply bg-primary text-primary-content;
+      }
+
+      &:not(:disabled) {
+        @apply cursor-pointer;
+      }
+
+      svg {
+        @apply w-4 h-4 fill-current stroke-current;
+      }
+    }
+
+    .trix-button--icon {
+      @apply bg-neutral-content hover:bg-neutral w-8 h-8 p-0;
+
+      text-indent: -9999px;
+
+      &::before {
+        @apply inline-block absolute opacity-60 content-[''] bg-center bg-no-repeat bg-contain inset-[0.4rem];
+      }
+
+      &:hover {
+        @apply bg-accent text-accent-content;
+      }
+
+      &.trix-active::before {
+        @apply opacity-100;
+      }
+    }
+
+    /* SVG icons */
+  }
+
+  .trix-medium {
+    @apply h-full;
+  }
+
+  /* Common styles for editor and content */
+  trix-editor, .trix-content {
+    @apply w-full h-full max-w-none p-2;
+
+    a {
+      @apply link link-accent;
+
+      &:not(.no-underline) {
+        @apply underline;
+      }
+
+      &:visited {
+        @apply link;
+      }
+    }
+
+    br {
+      @apply m-0 p-0;
+    }
+
+    h1 {
+      @apply text-3xl sm:text-5xl font-extrabold mb-6;
+    }
+
+    h2 {
+      @apply text-2xl sm:text-3xl font-bold mb-4;
+    }
+
+    h3 {
+      @apply text-xl sm:text-2xl font-bold mb-2;
+    }
+
+    h4 {
+      @apply text-lg sm:text-xl font-bold;
+    }
+
+    h5 {
+      @apply text-base sm:text-lg font-semibold;
+    }
+
+    h6 {
+      @apply text-sm sm:text-base font-semibold;
+    }
+
+    u {
+      @apply underline;
+    }
+
+    blockquote {
+      @apply text-left py-3 px-8 my-8 mx-auto text-base-content bg-base-200 dark:bg-base-300 border-l-accent rounded-s;
+
+      &::before, &::after {
+        @apply text-center block h-6 w-6 text-3xl font-semibold italic text-accent float-left rounded-full;
+
+        content: open-quote;
+      }
+
+      &::after {
+        @apply float-right;
+
+        content: close-quote;
+      }
+
+      &:hover::before, &:hover::after {
+        @apply font-extrabold;
+
+        transition: all 350ms;
+      }
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 1rem;
+
+      li {
+        list-style: disc;
+        margin-left: 1rem;
+      }
+    }
+
+    ol {
+      list-style-type: decimal;
+      padding-left: 1rem;
+
+      li {
+        list-style: decimal;
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  /* Specific to rendered content */
+  .trix-content {
+    * {
+      @apply my-1;
+    }
+
+    pre, .code {
+      @apply bg-base-300 !p-0 rounded-lg shadow-md border border-secondary;
+      @apply font-mono inline-block w-full overflow-x-auto no-scrollbar;
+
+      > code {
+        @apply !bg-base-300 !px-2 !py-2;
+        @apply rounded-md;
+        @apply font-mono inline-block w-full overflow-x-auto;
+        @apply text-gray-800 dark:text-base-content;
+      }
+    }
+
+    .attachment-gallery {
+      > action-text-attachment,
+      > .attachment {
+        flex: 1 0 33%;
+        padding: 0 0.5em;
+        max-width: 33%;
+      }
+
+      &.attachment-gallery--2,
+      &.attachment-gallery--4 {
+        > action-text-attachment,
+        > .attachment {
+          flex-basis: 50%;
+          max-width: 50%;
+        }
+      }
+    }
+
+    action-text-attachment {
+      figure img {
+        @apply rounded-lg shadow-xl;
+      }
+
+      .attachment {
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+  }
+
+  /* Specific to editor area */
+  trix-editor {
+    pre, .code {
+      @apply bg-base-300 p-2 rounded-lg shadow-md border border-secondary;
+      @apply font-mono inline-block w-full overflow-x-auto no-scrollbar;
+
+      > code {
+        @apply bg-base-300 px-2 py-2;
+        @apply rounded-md;
+        @apply font-mono inline-block w-full overflow-x-auto;
+        @apply text-gray-800 dark:text-base-content;
+      }
+    }
+  }
+}
+
+/* TRIX CUSTOMIZATION STOP */

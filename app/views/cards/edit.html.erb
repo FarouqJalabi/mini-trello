@@ -4,11 +4,14 @@
   <h1 class="font-bold text-4xl">Editing card</h1>
 
   <turbo-frame id="modal">
+    <%= render "shared/dates", record: @card %>
+  
     <%= render "form", card: @card %>
 
     <%= button_to @card, method: :delete, form_class: "contents", class: "btn btn-error", data: { turbo_confirm: "Are you sure?" } do %>
       <i class="bi bi-trash3-fill"></i>
-    <% end %>
+      <span class="sr-only">Delete</span>
+    <% end %> 
   </turbo-frame>
 
   <%= link_to "Back to board", @card.board, class: "btn" %>

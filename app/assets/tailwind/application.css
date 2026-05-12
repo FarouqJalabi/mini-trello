@@ -2,7 +2,7 @@
 @import "bootstrap-icons/font/bootstrap-icons";
 
 @plugin "daisyui" {
- themes: light --default, cmyk, valentine, emerald, dark, corporate, garden, aqua;
+ themes: light --default, valentine, emerald, corporate, autumn, caramellatte, dark;
 }
 
 @plugin "daisyui/theme" {
@@ -25,6 +25,25 @@ ul {
   opacity: 0.45;
 }
 
+.trix-button-group { 
+  @apply !join
+}
 
-.trix-button-group--file-tools { display: none !important; }
+.trix-button { 
+  @apply !btn !join-item
+}
 
+.trix-content { 
+  @apply textarea w-full
+}
+
+.trix-button-group--file-tools,
+.trix-button--icon-code { 
+  @apply !hidden 
+}
+
+:root:has(.theme-controller[value="dark"]:checked) {
+  trix-toolbar .trix-button--icon::before {
+    filter: invert(100%) !important;
+  }
+}

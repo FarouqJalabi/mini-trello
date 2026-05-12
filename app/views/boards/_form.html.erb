@@ -1,11 +1,11 @@
 <%= form_with(model: board, class: "contents space-y-4") do |form| %>
-  <%= form.label :title, class: "label" %>
-  <%= form.text_field :title, class: "input block" %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "input block" %>
+  </div>
 
-  <%= form.label :theme, class: "label" %>
+  <%= form.label :theme %>
   <%= form.select :theme, options_for_select(Board.themes, board.theme), {}, class: "select block" %>
 
-  <div class="inline">
-    <%= form.submit class: "btn btn-primary" %>
-  </div>
+  <%= form.submit "Save",  class: "btn btn-primary" %>
 <% end %>

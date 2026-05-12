@@ -2,7 +2,7 @@ class Card < ApplicationRecord
   belongs_to :list
   has_one :board, through: :list
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 40 }
   validates :order, numericality: { greater_than: 0 }
   has_rich_text :description
   validates :description, no_attachments: true

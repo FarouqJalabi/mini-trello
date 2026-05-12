@@ -1,11 +1,12 @@
 <div id="<%= dom_id list %>" class="bg-base-200 gap-2 min-w-70 sm:min-w-90 max-w-90 flex flex-col p-5 rounded-box relative"
   data-controller="draggable dropzone moveable" data-dropzone-model-name-value="card" data-dropzone-is-horizontal-value="false">
-  <div class="flex justify-between ">  
-    <h2 class="text-lg font-bold"><%= list.title %></h2>
+  <div class="flex justify-between items-center">  
+    <h2 class="text-lg font-bold text-content"><%= list.title %></h2>
 
     <div>
       <%= link_to  edit_list_path(list), class: "btn btn-secondary", data: { turbo_frame: "modal" } do %>
         <i class="bi bi-pencil-fill"></i>
+        <span class="sr-only">Edit</span>
       <% end %>
 
     </div>

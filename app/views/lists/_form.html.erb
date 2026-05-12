@@ -1,6 +1,8 @@
 <%= form_with(model: [@board, list], class: "contents space-y-4") do |form| %>
-  <%= form.label :title, class: "label" %>
-  <%= form.text_field :title, class: "input block" %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "input block" %>
+  </div>
 
-  <%= form.submit class: "btn btn-primary" %>
+  <%= form.submit "Save", class: "btn btn-primary" %>
 <% end %>

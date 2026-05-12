@@ -1,10 +1,10 @@
- <dialog id="main-dialog" closedby="any" data-controller="dialog" class="mx-auto mt-5 p-5 rounded-box">
+ <dialog id="main-dialog" closedby="any" data-controller="dialog" class="mx-auto mt-5 sm:mt-10 p-5 pt-3 rounded-box min-w-xs">
   <%= turbo_frame_tag "modal" do %>
     loading... (shouldn't be visible)
   <% end %>
   <button commandfor="main-dialog" command="close" class="absolute top-3 right-5 btn btn-sm">
-    <span class="sr-only">close dialog</span>
     <i class="bi bi-x text-xl"></i>
+    <span class="sr-only">close dialog</span>
   </button>
 </dialog>
 

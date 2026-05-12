@@ -4,6 +4,9 @@
   </div>
 
   <%= link_to "Show", board, class: "btn btn-primary w-full" %>
-  <%= button_to "Destroy", board, method: :delete, class: "btn btn-error w-full", data: { turbo_confirm: "Are you sure?" } %>
+  <%= button_to board, method: :delete, class: "btn btn-error w-full", data: { turbo_confirm: "Are you sure?" } do %>
+    Destroy
+    <i class="bi bi-trash3-fill text-lg"></i>
+  <% end %>
 </div>
 

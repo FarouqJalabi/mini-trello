@@ -1,0 +1,10 @@
+<%# locals: (record:) %>
+
+<div class="inline-flex gap-2 mb-2 mt-2 text-sm opacity-60">
+  <p class=""><%= record.created_at.to_formatted_s(:short) %></p> 
+  <% if record.updated_at.to_i > record.created_at.to_i %>
+    <span class="">|</span>
+    <p><%= record.updated_at.to_formatted_s(:short) %></p>
+  <% end %>
+</div>
+

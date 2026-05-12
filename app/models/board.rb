@@ -3,5 +3,5 @@ class Board < ApplicationRecord
   has_many :lists, -> { order(:order) }, dependent: :destroy
 
   validates :title, presence: true
-  enum :theme, %w[light cmyk valentine emerald dark corporate garden aqua].index_by(&:itself), validate: true
+  enum :theme, %w[light valentine emerald corporate autumn caramellatte dark].index_by(&:itself), validate: true
 end

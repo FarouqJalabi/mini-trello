@@ -18,7 +18,7 @@
       </li>
 
       <li>
-        <%= button_to user_path, method: :delete, data: { turbo_confirm: "Are you sure? You can't undo this!" }, class: "p-2" do%>
+        <%= button_to user_path, method: :delete, data: { turbo_confirm: "Are you sure? ALL data will be lost. You can't undo this!" }, class: "p-2" do%>
           <i class="bi bi-trash3"></i> Slette bruker
         <% end %>
       </li>

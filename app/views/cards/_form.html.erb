@@ -1,14 +1,13 @@
 <%= form_with(model: [@list, card], class: "contents space-y-4") do |form| %>
   <div>
-    <%= form.label :title, class: "label" %>
+    <%= form.label :title %>
     <%= form.text_field :title, class: "input block", autofocus: true, onfocus: "let temp_value=this.value; this.value=''; this.value=temp_value" %>
   </div>
 
   <div class="my-5">
     <%= form.label :description %>
-    <!-- TODO attachments looks bad -->
     <%= form.rich_textarea :description %> 
   </div>
 
-  <%= form.submit class: "btn btn-primary" %>
+  <%= form.submit "Save", class: "btn btn-primary" %>
 <% end %>

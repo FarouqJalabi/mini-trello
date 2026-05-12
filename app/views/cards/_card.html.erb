@@ -1,11 +1,5 @@
-<%= link_to edit_card_path(card), id: dom_id(card), class:"bg-base-100 flex justify-between items-center w-full p-2 rounded-field", data: { controller: "draggable moveable", turbo_frame: "modal" } do %>
-  <div>
-    <div class="flex">
-      <%= card.title %>
-    </div>
-
-    <p class="opacity-60 text-sm">
-      <%= card.created_at.to_formatted_s(:short) %> - <%= card.updated_at.to_formatted_s(:short) %>
-    </p>
+<%= link_to edit_card_path(card), id: dom_id(card), class:"bg-base-100 flex justify-between items-center w-full p-3 rounded-field", data: { controller: "draggable moveable", turbo_frame: "modal" } do %>
+  <div class="flex">
+    <%= card.title %>
   </div>
 <% end %>
