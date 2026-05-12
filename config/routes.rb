@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   resources :lists, only: [ :edit, :update, :destroy  ] do
     resources :cards, only: [ :new, :create ]
   end
-  resources :cards, only: [ :edit, :update, :destroy ]
+
+  resources :cards, only: [ :edit, :update, :destroy ] do
+    resources :comments, only: [ :index, :create ]
+  end
 
   patch "/cards", to: "cards#bulk_update"
   patch "/lists", to: "lists#bulk_update"

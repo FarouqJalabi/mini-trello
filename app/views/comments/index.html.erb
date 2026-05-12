@@ -1,0 +1,13 @@
+<% content_for :title, "New comment" %>
+<input type="radio" class="theme-controller" name="theme" value="<%= @card.board.theme %>" checked hidden />
+
+<h1 class="font-bold text-4xl">Comments</h1>
+
+<turbo-frame id="comments">
+  <%= render "application/flash"%>
+  <div class="mt-5"></div>
+  <%= render "form", comment: @comment %>
+  <div class="divide-y divide-opacity-30">
+    <%= render @card.comments.where.not(id: nil) %>
+  </div>
+</turbo-frame>

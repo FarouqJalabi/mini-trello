@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   private
     def create_default_board
-      board = current_user.boards.create!(title: "My First Board")
+      board = current_user.boards.create!(title: "Tutorial board")
       list = board.lists.create!(title: "To do")
       list.cards.create!(title: "Click me!", description: "Edit my description!")
       list.cards.create!(title: "Drag me to in progress list")

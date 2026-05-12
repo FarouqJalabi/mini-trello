@@ -1,6 +1,7 @@
 class Card < ApplicationRecord
   belongs_to :list
   has_one :board, through: :list
+  has_many :comments, -> { order(created_at: :desc) }, dependent: :destroy
 
   validates :title, presence: true, length: { maximum: 50 }
   validates :order, numericality: { greater_than: 0 }

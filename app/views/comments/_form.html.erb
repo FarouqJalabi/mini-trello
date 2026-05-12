@@ -1,0 +1,6 @@
+<%= form_with(model: [@card, @comment]) do |form| %>
+  <%= form.label :content, "Comment" %>
+  <%= form.textarea :content, rows: 4, class: "textarea block" %>
+
+  <%= form.submit class: "btn btn-primary mt-2" %>
+<% end %>
