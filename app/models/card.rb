@@ -6,7 +6,7 @@ class Card < ApplicationRecord
   validates :title, presence: true, length: { maximum: 50 }
   validates :order, numericality: { greater_than: 0 }
   has_rich_text :description
-  validates :description, no_attachments: true
+  validates :description, no_attachments: true, length: { maximum: 2500 }
 
 
   before_validation :set_default_order, on: :create
